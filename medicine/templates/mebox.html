@@ -1,0 +1,179 @@
+{% extends "index.html" %}
+
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>پروژه تستی ادیسه</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Medilab
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+{% block cart %}
+<div dir="rtl" class="mt-5 me-5  shadow container">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="ibox">
+                    <div class="ibox-title">
+
+                        <h4>در صندوق</h4>
+                    </div>
+                {% for cpr in f %}
+                    <div dir="rtl" class="ibox-content">
+                        <div class="shadow mt-5 table-responsive">
+                            <table class="table shoping-cart-table">
+                                <tbody>
+                                <tr>
+                                    
+                                   
+                                    
+                                    <td width="90">
+                                        <div class="col">
+                                            <img src={{cpr.selected_medicines.image.url}} class="shadow card-img-top md-5  border rounded" style="width:150px;height:150px;"/>
+                                        </div>
+                                    </td>
+                                    <td class="desc">
+                                        <h3>
+                                        <a href="#" class="text-navy">
+                                            {{cpr.selected_medicines.title}}
+                                        </a>
+                                        </h3>
+                                        <p class="small">
+                                            
+                                        <dl class="small m-b-none">
+                                            
+                                        </dl>
+                                    
+                                        <div class="m-t-sm">
+                                            <a href="{% url 'all' %}" style="width:110px;height:60px; background-color: rgb(159, 255, 80);" class="btn "><i class="fa fa-gift"></i><p style="color: rgb(7, 6, 6);" > دارو ها </p></a>
+                                            |
+                                            <a href="{% url 'delete' cpr.id %}" style="width:110px;height:60px;"  class="btn btn-danger"><i  class="fa fa-trash"></i><p style="color: rgb(7, 6, 6);">حذف </p></a>
+                                        </div>
+                                    </td>
+    
+                                    <td>
+                                        
+                                        <h6 class="mt-5 small text-muted">قیمت :{{cpr.selected_medicines.price}}</h6>
+                                    </td>
+                                    <td width="65">
+                                        
+                                    <td>
+                                        <h4 >
+                                            {{cpr.price}}
+                                        </h4>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+    
+                    </div>
+                {% endfor %}
+                    
+                    
+                    
+                    
+                </div>
+    
+            </div>
+            <div class="col-md-3">
+                <div class="ibox">
+                    <div class="shadow ibox-title">
+                        <h5>توصیه</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <span>
+                          لطفا داروهای خود را با دقت انتخاب کنید 
+                        </span>
+                        
+                        <hr>
+                        <span class="text-muted small">
+                            به توصیه های گفته شده بر روی دارو دقت کنید 
+                        </span>
+                        <div class="m-t-sm">
+                            <div class="btn-group mt-5">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>تماس با پزشک</h5>
+                    </div>
+                    <div class="box-content text-center">
+                        <h3><i class="fa fa-phone"></i> 09120123456</h3>
+                        <span class="small">
+                            لطفا در صورت داشتن هرگونه سوال با ما تماس بگیرید. ما 24 ساعت در دسترس هستیم.
+                        </span>
+                    </div>
+                </div>
+    
+                <div class="ibox">
+                    <div class=" shadow ibox-content">
+    
+                        
+                        <hr>
+                        <div>
+                            <a target="blank" href="https://www.majalesalamat.com/knowledge/most-deadly-drugs/" class="product-name"> دارو های خطرناک</a>
+                            <div class="small m-t-xs">
+                                با زدن بر روی لینک بالا میتوانید درباره دارو های خطرناک مطالعه کنید
+                            </div>
+                            
+                        </div>
+                        <hr>
+                        <div>
+                            <a target="blank" href="https://www.darooyab.ir/PharmaceuticalCompanies" class="product-name"> شرکت های دارو سازی </a>
+                            <div class="small m-t-xs">
+                                با زدن  لینک بالا میتوانید درباره شرکت های دارو سازی مطالعه داشته باشید
+                            </div>
+                            <div class="m-t text-righ">
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock%}
+</body>
+</html>

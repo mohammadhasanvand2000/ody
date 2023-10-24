@@ -1,0 +1,141 @@
+{% extends "index.html" %}
+
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>پروژه تستی ادیسه</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <style>
+    .custom-column {
+      width: 25%; /* 25% عرض هر کلوم برای نمایش 4 کلوم کنار هم */
+      float: left; /* برای قرار گرفتن کلوم‌ها کنار هم */
+      padding: 10px; /* فاصله‌ی دلخواه بین کلوم‌ها */
+    }
+  </style>
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Medilab
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+    
+{% block blog %}
+
+
+    <div dir="rtl" class="section-title">
+      <h1 style="color: rgb(204, 16, 16);">هشدار!</h1><br><h3 style="color: rgb(204, 16, 16);">شما تداخل دارویی دارید</h3>
+      <p>دارویی که شما انتخاب کردید با لیست دارو هایی که در صندوق انتخاب شماست تداخل دارویی دارد و استفاده آن ها با هم خطرناک است </p>
+    </div>
+
+    <div class="row gy-4">
+      <div class="col-lg-3">
+        
+        <ul class="nav nav-tabs flex-column">
+          <h6 style="color: rgb(149, 2, 80);" class="text-center">برای خواندن اطلاعات دارو ها کلیک کنید</h6>
+          <li class="nav-item">
+            <a class="nav-link active  shadow " data-bs-toggle="tab" href="#tab-1">{{h.title }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  border shadow" data-bs-toggle="tab" href="#tab-2">{{med.title}}</a>
+          </li>
+          
+        </ul>
+      </div>
+      <div class="col-lg-9">
+        <div class="tab-content">
+          <div class="tab-pane active show" id="tab-1">
+            <div class="row gy-4">
+              <div class="col-lg-8 details order-2 order-lg-1">
+                <h3>{{h.title }}</h3>
+                <div style="background-color: aqua; border-color: rgb(241, 6, 6)" class="border border-danger  container col-lg-8">
+                  <p class="fst-italic">
+                    <h5>طبق توصیه پزشک :
+                      <h6 style="color: brown;">(تداخل دارویی)</h6>
+                    </h5>
+                    <h6>
+                      {% if h.drug_interactions %}
+                        {{ h.drug_interactions }}
+                      {% else %}
+                        پزشک برای این دارو تداخلی ننوشته احتمالا تداخل در داروی دیگری است
+                      {% endif %}
+                    </h6>
+                  </p> </p>
+                </div>
+                <p>داروی {{h.title }} در صندوق انتخاب شماست و با داروی جدیدی که اضافه میکنید تداخل دارویی دارد و خطرناک است  </p>
+              </div>
+              <div class="col-lg-4 text-center order-1 order-lg-2">
+                <img src="{{h.image.url}}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-2">
+            <div class="row gy-4">
+              <div class="col-lg-8 details order-2 order-lg-1">
+                <h3>{{med.title }}</h3>
+                <div style="background-color: aqua; border-color: rgb(241, 6, 6)" class="border border-danger  container col-lg-8">
+                  <p class="fst-italic">
+                    <h5>طبق توصیه پزشک :
+                      <h6 style="color: brown;">(تداخل دارویی)</h6>
+                    </h5>
+                    <h6>
+                      {% if med.drug_interactions %}
+                        {{ med.drug_interactions }}
+                      {% else %}
+                        <h6 style="color: rgb(248, 143, 6);">پزشک برای این دارو تداخلی ننوشته احتمالا تداخل در داروی دیگری است </h6> 
+                      {% endif %}
+                    </h6>
+                  </p>
+                </div>
+                <p>داروی {{med.title }} را شما میخواهید اضافه کنید اما داروی {{h.title}} در صندوق انتخاب شماست و بایک دیگر تداخل دارویی دارند به همین دلیل نمیتوانیم به شما اراعه دهیم </p>
+              </div>
+              <div class="col-lg-4  text-center order-1 order-lg-2">
+                <img src="{{med.image.url}}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+
+  </div>
+
+{% endblock %}
+<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>
